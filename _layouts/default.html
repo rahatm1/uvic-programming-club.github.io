@@ -11,7 +11,22 @@
   <![endif]-->
 
   <link href="{{ site.baseurl }}/assets/css/style.css" rel="stylesheet" />
-  <link href="{{ site.baseurl }}/assets/css/colors-dark.css" rel="stylesheet" />
+
+  <!-- <link href="{{ site.baseurl }}/assets/css/colors-dark.css" rel="stylesheet" /> -->
+  <script src="{{ site.baseurl }}/assets/js/suncalc.js"></script>
+
+  <script type="text/javascript">
+    var times = SunCalc.getTimes(new Date(), 48.4, -123.4);
+    var sunriseHr = times.sunrise.getHours();
+    var sunsetHr = times.sunset.getHours();
+    var currentHour = new Date().getHours();
+    if (currentHour >= sunriseHr && currentHour <= sunsetHr) {
+      document.write('<link href="{{ site.baseurl }}/assets/css/colors-light.css" rel="stylesheet" />');
+    }
+    else {
+      document.write('<link href="{{ site.baseurl }}/assets/css/colors-dark.css" rel="stylesheet" />')
+    }
+  </script>
 
 </head>
 
